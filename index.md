@@ -55,3 +55,21 @@
 > hogehoge, mogemoge, piyopiyo.  
 > xxxxxxxxxxxxxx.  
 
+## sample code.
+
+```java
+	/**
+	 * {@link ObjectMapper} の遅延初期化シングルトンホルダ。
+	 * 
+	 * @author sugaryo
+	 */
+	private static final class SingletonHolder {
+		// Initialization-on-demand-holder idiom
+		
+		/** デフォルトのObjectMapper */
+		private static final ObjectMapper mapper = new ObjectMapper();
+		
+		/** PrettyPrint設定のObjectMapper */
+		private static final ObjectMapper pretty = new ObjectMapper().enable( SerializationFeature.INDENT_OUTPUT );
+	}
+```
