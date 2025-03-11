@@ -1,0 +1,1 @@
+# GitHub Pages rendering test.
