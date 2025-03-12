@@ -1,5 +1,39 @@
 # GitHub Pages rendering test.
 
+## sample me.
+
+- [2006年11月～] １社目 実習生配属
+- [2007年04月～2013年02月] １社目：SIer
+- [2013年03月～2016年09月] ２社目：受託・SES
+- [2016年10月～2017年09月] ３社目：SES
+- [2017年12月～現在] 個人事業主
+  - 2021年から消費税課税事業者。
+  - 2024年10月にインボイス取得。
+
+> **note:**  
+> hogehoge, mogemoge, piyopiyo.  
+> xxxxxxxxxxxxxx.  
+
+## sample code.
+
+```java
+	/**
+	 * {@link ObjectMapper} の遅延初期化シングルトンホルダ。
+	 * 
+	 * @author sugaryo
+	 */
+	private static final class SingletonHolder {
+		// Initialization-on-demand-holder idiom
+		
+		/** デフォルトのObjectMapper */
+		private static final ObjectMapper mapper = new ObjectMapper();
+		
+		/** PrettyPrint設定のObjectMapper */
+		private static final ObjectMapper pretty = new ObjectMapper().enable( SerializationFeature.INDENT_OUTPUT );
+	}
+```
+
+
 ## native html table.
 <table><thead>
   <tr>
@@ -39,37 +73,3 @@
     <td>88%</td>
   </tr>
 </tbody>
-<!-- </table> -->
-
-## sample me.
-
-- [2006年11月～] １社目 実習生配属
-- [2007年04月～2013年02月] １社目：SIer
-- [2013年03月～2016年09月] ２社目：受託・SES
-- [2016年10月～2017年09月] ３社目：SES
-- [2017年12月～現在] 個人事業主
-  - 2021年から消費税課税事業者。
-  - 2024年10月にインボイス取得。
-
-> **note:**  
-> hogehoge, mogemoge, piyopiyo.  
-> xxxxxxxxxxxxxx.  
-
-## sample code.
-
-```java
-	/**
-	 * {@link ObjectMapper} の遅延初期化シングルトンホルダ。
-	 * 
-	 * @author sugaryo
-	 */
-	private static final class SingletonHolder {
-		// Initialization-on-demand-holder idiom
-		
-		/** デフォルトのObjectMapper */
-		private static final ObjectMapper mapper = new ObjectMapper();
-		
-		/** PrettyPrint設定のObjectMapper */
-		private static final ObjectMapper pretty = new ObjectMapper().enable( SerializationFeature.INDENT_OUTPUT );
-	}
-```
