@@ -16,6 +16,20 @@
 > hogehoge, mogemoge, piyopiyo.  
 > xxxxxxxxxxxxxx.  
 
+## emoji.
+
+- :warning: 注意
+- :sparkling_heart: 得意
+- :sweat_drops: 困り
+- :tada: グッド
+- :white_flower: よくできました
+- :cherry_blossom: さくら
+- :sparkles: キラキラ
+- :star2: スター
+- :beginner: ビギナー
+- :fire: 進捗遅延
+
+
 ## sample code.
 
 ```java
