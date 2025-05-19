@@ -1,5 +1,10 @@
 # GitHub Pages rendering test.
 
+## sub pages.
+
+- [hoge](pages/hoge.md)
+- [moge](pages/moge.md)
+
 ## sample me.
 
 - `[2006年11月～]` １社目 実習生配属
