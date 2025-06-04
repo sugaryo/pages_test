@@ -5,6 +5,10 @@
 - [hoge](pages/hoge.md)
 - [moge](pages/moge.md)
 
+## Jekyll `_includes`
+
+{% include timeline.html %}
+
 ## sample me.
 
 - `[2006年11月～]` １社目 実習生配属
