@@ -1,406 +1,391 @@
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-        background-color: #f5f5f5;
-    }
-    
-    .timeline-container {
-        max-width: 900px;
-        margin: 0 auto;
-        background-color: white;
-        border: 2px solid #333;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-    
-    .major-category {
-        display: flex;
-        border-bottom: 2px solid #333;
-    }
-    
-    .major-category:last-child {
-        border-bottom: none;
-    }
-    
-    .major-category-label {
-        min-width: 100px;
-        padding: 20px 15px;
-        font-weight: bold;
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-right: 2px solid #333;
-        writing-mode: vertical-rl;
-        text-orientation: mixed;
-    }
-    
-    .major-category-1 .major-category-label {
-        background-color: #cce7ff;
-    }
-    
-    .major-category-2 .major-category-label {
-        background-color: #ccffcc;
-    }
-    
-    .major-category-3 .major-category-label {
-        background-color: #ffccff;
-    }
-    
-    .middle-categories {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .middle-category {
-        display: flex;
-        border-bottom: 1px solid #333;
-    }
-    
-    .middle-category:last-child {
-        border-bottom: none;
-    }
-    
-    .middle-category-label {
-        min-width: 100px;
-        padding: 15px;
-        font-weight: bold;
-        font-size: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-right: 1px solid #333;
-        writing-mode: vertical-rl;
-        text-orientation: mixed;
-    }
-    
-    .major-category-1 .middle-category-label {
-        background-color: #e6f3ff;
-    }
-    
-    .major-category-2 .middle-category-label {
-        background-color: #e6ffe6;
-    }
-    
-    .major-category-3 .middle-category-label {
-        background-color: #ffe6ff;
-    }
-    
-    .periods {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .period {
-        padding: 12px 20px;
-        border-bottom: 1px solid #999;
-        position: relative;
-    }
-    
-    .period:last-child {
-        border-bottom: none;
-    }
-    
-    .major-category-1 .period {
-        background-color: #f0f8ff;
-    }
-    
-    .major-category-2 .period {
-        background-color: #f0fff0;
-    }
-    
-    .major-category-3 .period {
-        background-color: #fff0ff;
-    }
-    
-    .period-header {
-        font-weight: bold;
-        margin-bottom: 5px;
-        font-size: 14px;
-    }
-    
-    .period-dates {
-        font-family: monospace;
-        color: #333;
-        margin-bottom: 5px;
-    }
-    
-    .period-memo {
-        font-size: 13px;
-        color: #555;
-        line-height: 1.4;
-    }
-    
-    .period-memo ul {
-        margin: 5px 0 0 0;
-        padding-left: 20px;
-    }
-    
-    .period-memo li {
-        margin-bottom: 3px;
-    }
-    
-    /* 期間の長さに応じた高さ調整 */
-    .period-short {
-        min-height: 60px;
-    }
-    
-    .period-medium {
-        min-height: 90px;
-    }
-    
-    .period-long {
-        min-height: 120px;
-    }
-    
-    .period-extra-long {
-        min-height: 150px;
-    }
-    
-    .triangle {
-        display: inline-block;
-        width: 0;
-        height: 0;
-        border-left: 8px solid #333;
-        border-top: 6px solid transparent;
-        border-bottom: 6px solid transparent;
-        margin-right: 8px;
-        vertical-align: middle;
-    }
-    
-    /* レスポンシブ対応 */
-    @media (max-width: 768px) {
-        .major-category-label,
-        .middle-category-label {
-            writing-mode: horizontal-tb;
-            text-orientation: mixed;
-            min-width: 80px;
-            padding: 10px;
-        }
-        
-        .period {
-            padding: 10px 15px;
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 16px;
+            background-color: #f5f5f5;
         }
         
         .timeline-container {
-            margin: 10px;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            border: 2px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
         }
-    }
-</style>
+        
+        /* major categories */
+        
+        .major-category {
+            display: flex;
+            border-bottom: 2px solid #333;
+        }
+        
+        .major-category:last-child {
+            border-bottom: none;
+        }
+        
+        .major-category-label {
+            min-width: 80px;
+            padding: 12px 16px;
+            font-weight: bold;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 2px solid #333;
+            writing-mode: vertical-lr;
+            text-orientation: mixed;
+        }
+        
+        .major-category-1 .major-category-label {
+            background-color: #cce7ff;
+        }
+        
+        .major-category-2 .major-category-label {
+            background-color: #ccffcc;
+        }
+        
+        .major-category-3 .major-category-label {
+            background-color: #ffffcc;
+        }
+        
+        .major-category-4 .major-category-label {
+            background-color: #ffccff;
+        }
+        
+        /* middle categories */
+        
+        .middle-categories {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .middle-category {
+            display: flex;
+            border-bottom: 1px solid #333;
+        }
+        
+        .middle-category:last-child {
+            border-bottom: none;
+        }
+        
+        .middle-category-label {
+            min-width: 300px;
+            max-width: 300px;
+            padding: 12px 24px;
+            font-size: 14px;
+            text-align: left;
+            align-content: center;
+            border-right: 1px solid #333;
+            writing-mode: horizontal-tb;
+            word-break: break-word;
+            white-space: normal;
+        }
+        .category-name {
+            font-weight: normal;
+            color: #C33;
+        }
+        .category-name::before {
+            content: "［";
+        }
+        .category-name::after {
+            content: "］";
+        }
+        .project-name {
+            font-weight: bold;
+            margin-left: 16px;
+        }
+        .project-name::before {
+            content: "● ";
+        }
+        
+        .major-category-1 .middle-category-label {
+            background-color: #e6f3ff;
+        }
+        
+        .major-category-2 .middle-category-label {
+            background-color: #e6ffe6;
+        }
+        
+        .major-category-3 .middle-category-label {
+            background-color: #ffffe6;
+        }
+        
+        .major-category-4 .middle-category-label {
+            background-color: #ffe6ff;
+        }
+        
+        /* periods */
+        
+        .periods {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .major-category-1 .periods {
+            background-color: #f0f8ff;
+        }
+        
+        .major-category-2 .periods {
+            background-color: #f0fff0;
+        }
+        
+        .major-category-3 .periods {
+            background-color: #fffff0;
+        }
+        
+        .major-category-4 .periods {
+            background-color: #fff0ff;
+        }
+        
+        .period {
+            padding: 12px 20px;
+            border-bottom: 1px solid #999;
+            position: relative;
+        }
+        
+        .period:last-child {
+            border-bottom: none;
+        }
+        
+        .period-header {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .period-memo {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.4;
+        }
+        
+        .period-memo ul {
+            margin: 5px 0 0 0;
+            padding-left: 20px;
+        }
+        
+        .period-memo li {
+            margin-bottom: 3px;
+        }
+        
+        /* 期間の長さに応じた高さ調整 */
+        .period-short {
+            min-height: 30px;
+        }
+        .period-medium {
+            min-height: 60px;
+        }
+        .period-long {
+            min-height: 120px;
+        }
+        .period-extra-long {
+            min-height: 150px;
+        }
+        .period-extra-very-long {
+            min-height: 200px;
+        }
 
-<div class="timeline-container">
-    <!-- 大分類1 -->
-    <div class="major-category major-category-1">
-        <div class="major-category-label">
-            大分類 1
-        </div>
-        <div class="middle-categories">
-            <!-- 中分類1 -->
-            <div class="middle-category">
-                <div class="middle-category-label">
-                    中分類 1
-                </div>
-                <div class="periods">
-                    <div class="period period-extra-long">
-                        <div class="period-header">
-                            <span class="triangle"></span>期間①：
-                        </div>
-                        <div class="period-dates">2023-04～2024-03</div>
-                        <div class="period-memo">
-                            <ul>
-                                <li>重要なマイルストーン達成</li>
-                                <li>チーム体制の構築</li>
-                                <li>基盤技術の確立</li>
-                            </ul>
+        .triangle {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 8px solid #333;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        
+    </style>
+
+
+
+    <div class="timeline-container">
+        <!-- 会社員時代.一社目 -->
+        <div class="major-category major-category-1">
+            <div class="major-category-label">会社員時代<br>一社目</div>
+            <div class="middle-categories">
+                <div class="middle-category">
+                    <div class="middle-category-label">
+                        <div class="category-name">鉄道</div>
+                        <div class="project-name">線路管理システム改修</div>
+                    </div>
+                    <div class="periods">
+                        <div class="period period-extra-very-long">
+                            <div class="period-header"><span class="triangle"></span>定期更改</div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- 中分類2 -->
-            <div class="middle-category">
-                <div class="middle-category-label">
-                    中分類 2
-                </div>
-                <div class="periods">
-                    <div class="period period-medium">
-                        <div class="period-header">
-                            <span class="triangle"></span>期間②：
-                        </div>
-                        <div class="period-dates">2024-04～2024-09</div>
-                        <div class="period-memo">
-                            <ul>
-                                <li>プロトタイプ開発</li>
-                                <li>ユーザーテスト実施</li>
-                                <li>フィードバック収集・分析</li>
-                            </ul>
-                        </div>
+                <div class="middle-category">
+                    <div class="middle-category-label">
+                        <div class="category-name">鉄道</div>
+                        <div class="project-name">架線管理システム改修</div>
                     </div>
-                    <div class="period period-medium">
-                        <div class="period-header">
-                            <span class="triangle"></span>期間③：
-                        </div>
-                        <div class="period-dates">2024-10～2025-03</div>
-                        <div class="period-memo">
-                            <ul>
-                                <li>システム改良</li>
-                                <li>品質向上施策</li>
-                            </ul>
+                    <div class="periods">
+                        <div class="period period-medium">
+                            <div class="period-header"><span class="triangle"></span>2008/09～2009/05（9ヶ月）</div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- 大分類2 -->
-    <div class="major-category major-category-2">
-        <div class="major-category-label">
-            大分類 2
-        </div>
-        <div class="middle-categories">
-            <!-- 中分類3 -->
-            <div class="middle-category">
-                <div class="middle-category-label">
-                    中分類 3
-                </div>
-                <div class="periods">
-                    <div class="period period-long">
-                        <div class="period-header">
-                            <span class="triangle"></span>期間④：
-                        </div>
-                        <div class="period-dates">2025-04～2025-12</div>
-                        <div class="period-memo">
-                            <ul>
-                                <li>本格運用開始</li>
-                                <li>運用体制確立</li>
-                                <li>継続的改善</li>
-                            </ul>
+                <div class="middle-category">
+                    <div class="middle-category-label">
+                        <div class="category-name">官公庁</div>
+                        <div class="project-name">防衛庁関連システム開発支援</div>
+                    </div>
+                    <div class="periods">
+                        <div class="period period-medium">
+                            <div class="period-header"><span class="triangle"></span>2009/06～2010/04（約1年）</div>
                         </div>
                     </div>
-                    <div class="period period-extra-long">
-                        <div class="period-header">
-                            <span class="triangle"></span>期間⑤：
+                </div>
+                <div class="middle-category">
+                    <div class="middle-category-label">
+                        <div class="category-name">鉄道</div>
+                        <div class="project-name">ダイヤ管理システム改修</div>
+                    </div>
+                    <div class="periods">
+                        <div class="period period-medium">
+                            <div class="period-header"><span class="triangle"></span>2007/09～2008/01（約半年）</div>
                         </div>
-                        <div class="period-dates">2026-01～2026-12</div>
-                        <div class="period-memo">
-                            <ul>
-                                <li>機能拡張フェーズ</li>
-                                <li>新技術導入検討</li>
-                                <li>スケールアップ準備</li>
-                                <li>パートナーシップ構築</li>
-                            </ul>
+                        <div class="period period-medium">
+                            <div class="period-header"><span class="triangle"></span>2008/03～2008/08（半年）</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="middle-category">
+                    <div class="middle-category-label">
+                        <div class="category-name">医療系</div>
+                        <div class="project-name">検診情報管理システム開発支援</div>
+                    </div>
+                    <div class="periods">
+                        <div class="period period-short">
+                            <div class="period-header"><span class="triangle"></span>2008/02～2008/03（2ヶ月）</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="middle-category">
+                    <div class="middle-category-label">
+                        <div class="category-name">鉄道</div>
+                        <div class="project-name">ICカード管理システム改修</div>
+                    </div>
+                    <div class="periods">
+                        <div class="period period-long">
+                            <div class="period-header"><span class="triangle"></span>2010/05～2011/06（14ヶ月）</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="middle-category">
+                    <div class="middle-category-label">
+                        <div class="category-name">鉄道</div>
+                        <div class="project-name">土木設備管理システム改修</div>
+                    </div>
+                    <div class="periods">
+                        <div class="period period-long">
+                            <div class="period-header"><span class="triangle"></span>2011/07～2012/10（16ヶ月）</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- 大分類3 -->
-    <div class="major-category major-category-3">
-        <div class="major-category-label">
-            大分類 3
+
+        <!-- 会社員時代.二社目 -->
+        <div class="major-category major-category-2">
+            <div class="major-category-label">会社員時代<br>二社目</div>
+            <div class="middle-categories">
+                <div class="middle-category">
+                    <div class="middle-category-label">
+                        <div class="category-name">債権管理</div>
+                        <div class="project-name">延滞債権パッケージ開発・導入</div>
+                    </div>
+                    <div class="periods">
+                        <div class="period period-medium"><div class="period-header"><span class="triangle"></span>2013/03～2013/08（半年）</div></div>
+                        <div class="period period-long"><div class="period-header"><span class="triangle"></span>2013/10～2014/09（1年）</div></div>
+                        <div class="period period-extra-long"><div class="period-header"><span class="triangle"></span>2014/10～2016/09（2年）</div></div>
+                        <div class="period period-short"><div class="period-header"><span class="triangle"></span>2015/02～2015/03（2ヶ月）</div></div>
+                    </div>
+                </div>
+                <div class="middle-category">
+                    <div class="middle-category-label">
+                        <div class="category-name">収納代行業</div>
+                        <div class="project-name">請求情報管理ツール改修</div>
+                    </div>
+                    <div class="periods">
+                        <div class="period period-short"><div class="period-header"><span class="triangle"></span>2013/06～2013/09（4ヶ月）</div></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="middle-categories">
-            <!-- 中分類4 -->
-            <div class="middle-category">
-                <div class="middle-category-label">
-                    中分類 4
-                </div>
-                <div class="periods">
-                    <div class="period period-medium">
-                        <div class="period-header">
-                            <span class="triangle"></span>期間⑥：
-                        </div>
-                        <div class="period-dates">2027-01～2027-06</div>
-                        <div class="period-memo">
-                            <ul>
-                                <li>第2フェーズ開始</li>
-                                <li>新機能リリース</li>
-                            </ul>
-                        </div>
+
+        <!-- 会社員時代.三社目 -->
+        <div class="major-category major-category-3">
+            <div class="major-category-label">会社員時代<br>三社目</div>
+            <div class="middle-categories">
+                <div class="middle-category">
+                    <div class="middle-category-label">
+                        <div class="category-name">CRM/SFA</div>
+                        <div class="project-name">パッケージカスタマイズ</div>
                     </div>
-                    <div class="period period-medium">
-                        <div class="period-header">
-                            <span class="triangle"></span>期間⑦：
-                        </div>
-                        <div class="period-dates">2027-07～2027-12</div>
-                        <div class="period-memo">
-                            <ul>
-                                <li>運用最適化</li>
-                                <li>効率化施策実行</li>
-                            </ul>
-                        </div>
+                    <div class="periods">
+                        <div class="period period-extra-long"><div class="period-header"><span class="triangle"></span>2016/10～2017/09（1年）</div></div>
                     </div>
                 </div>
             </div>
-            
-            <!-- 中分類5 -->
-            <div class="middle-category">
-                <div class="middle-category-label">
-                    中分類 5
-                </div>
-                <div class="periods">
-                    <div class="period period-short">
-                        <div class="period-header">
-                            <span class="triangle"></span>期間⑧：
-                        </div>
-                        <div class="period-dates">2028-01～2028-03</div>
-                        <div class="period-memo">
-                            <ul>
-                                <li>短期集中施策</li>
-                            </ul>
-                        </div>
+        </div>
+
+        <!-- 個人事業主時代 -->
+        <div class="major-category major-category-4">
+            <div class="major-category-label">個人事業主時代</div>
+            <div class="middle-categories">
+                <div class="middle-category">
+                    <div class="middle-category-label">
+                        <div class="category-name">著作権</div>
+                        <div class="project-name">社内管理システム改修</div>
                     </div>
-                    <div class="period period-short">
-                        <div class="period-header">
-                            <span class="triangle"></span>期間⑨：
-                        </div>
-                        <div class="period-dates">2028-04～2028-06</div>
-                        <div class="period-memo">
-                            <ul>
-                                <li>検証フェーズ</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="period period-short">
-                        <div class="period-header">
-                            <span class="triangle"></span>期間⑩：
-                        </div>
-                        <div class="period-dates">2028-07～2028-09</div>
-                        <div class="period-memo">
-                            <ul>
-                                <li>調整期間</li>
-                            </ul>
-                        </div>
+                    <div class="periods">
+                        <div class="period period-short"><div class="period-header"><span class="triangle"></span>2017/12～2018/03（4ヶ月）</div></div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- 中分類6 -->
-            <div class="middle-category">
-                <div class="middle-category-label">
-                    中分類 6
+                <div class="middle-category">
+                    <div class="middle-category-label">
+                        <div class="category-name">SaaS系商材</div>
+                        <div class="project-name">営業支援社内サブシステム開発</div>
+                    </div>
+                    <div class="periods">
+                        <div class="period period-long"><div class="period-header"><span class="triangle"></span>2018/04～2019/10（約1年半）</div></div>
+                    </div>
                 </div>
-                <div class="periods">
-                    <div class="period period-medium">
-                        <div class="period-header">
-                            <span class="triangle"></span>期間⑪：
-                        </div>
-                        <div class="period-dates">2028-10～2029-03</div>
-                        <div class="period-memo">
-                            <ul>
-                                <li>最終フェーズ</li>
-                                <li>完了準備</li>
-                            </ul>
-                        </div>
+                <div class="middle-category">
+                    <div class="middle-category-label">
+                        <div class="category-name">飲食系</div>
+                        <div class="project-name">ポイントアプリ開発支援</div>
+                    </div>
+                    <div class="periods">
+                        <div class="period period-short"><div class="period-header"><span class="triangle"></span>2019/09～2019/11（3ヶ月）</div></div>
+                    </div>
+                </div>
+                <div class="middle-category">
+                    <div class="middle-category-label">
+                        <div class="category-name">研究・バイオ系</div>
+                        <div class="project-name">データベース登録検索システム開発</div>
+                    </div>
+                    <div class="periods">
+                        <div class="period period-medium"><div class="period-header"><span class="triangle"></span>2020/02～2020/09（8ヶ月）</div></div>
+                    </div>
+                </div>
+                <div class="middle-category">
+                    <div class="middle-category-label">
+                        <div class="category-name">物流系・ラストワンマイル</div>
+                        <div class="project-name">API連携基盤開発</div>
+                    </div>
+                    <div class="periods">
+                        <div class="period period-extra-very-long"><div class="period-header"><span class="triangle"></span>2021/04～2024/11（約3年半）</div></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
